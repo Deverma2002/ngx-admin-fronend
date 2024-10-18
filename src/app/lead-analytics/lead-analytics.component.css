@@ -1,8 +1,41 @@
+.dynamic-title {
+  font-size: 2.5em; /* Adjust size as needed */
+  color: #4A4A4A; /* Text color */
+  text-align: center; /* Center the title */
+  margin-bottom: 20px; /* Space below the title */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Optional: Hover effect */
+.dynamic-title:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+
+
+.chart-container {
+  display: flex;
+  justify-content: space-between; /* Space between charts */
+  margin-bottom: 20px; /* Space below the container */
+}
+
+.chart-card {
+  flex: 1; /* Allow cards to grow equally */
+  margin-right: 10px; /* Space between cards */
+  max-width: calc(50% - 10px); /* Limit width to half of the container minus spacing */
+}
+
+.chart-card:last-child {
+  margin-right: 0; /* Remove margin for the last card */
+}
+
 /* Styles for bar-chart component */
 canvas {
   width: 100%;
   height: auto;
 }
+
 /* src/styles.css */
 nb-card {
   transform: translate3d(0, 0, 0);

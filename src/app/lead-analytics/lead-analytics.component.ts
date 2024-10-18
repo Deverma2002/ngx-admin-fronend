@@ -7,6 +7,8 @@ import { PieChartComponent } from './pie-chart.component';
 import { RadarChartComponent } from './radar-chart.component';
 import { BarChartComponent } from './bar-chart.component';
 import { CommonModule } from '@angular/common';
+import $ from 'jquery'; // Default import
+import { Lead } from '../lead.model';  // Assuming Lead is the interface for user data
 
 @Component({
   selector: 'app-lead-analytics',
@@ -27,7 +29,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./lead-analytics.component.css'],
 })
 export class LeadAnalyticsComponent implements OnInit {
-  userId: string =''; // Keep userId as a string
+  userId: string = ''; 
+  lead: Lead | null = null;  // Define a property for Lead
+  firstName: string = '';  // Define firstName to store user name
+
   lineChartData!: { labels: string[], values: number[] };
   pieChartData!: { labels: string[], values: number[], colors: string[], borderColors: string[] };
   radarChartData!: { labels: string[], values: number[] };
@@ -36,23 +41,40 @@ export class LeadAnalyticsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Get the userId from the route as a string
-    this.userId = this.route.snapshot.paramMap.get('id')!; // Ensure this fetches correctly
+    this.userId = this.route.snapshot.paramMap.get('id')!; 
     if (!this.userId) {
       console.error('User ID is undefined or invalid');
       return;
     }
+    this.fetchUserName();
     this.fetchChartData();
   }
 
+  fetchUserName() {
+    this.http.get<Lead>(`http://localhost:5000/api/users/${this.userId}`)
+        .subscribe({
+            next: (data) => {
+                this.lead = data;  // Assign the fetched data to the 'lead' property
+                if (this.lead) {
+                  this.firstName = this.lead.name; // Example if you want to display the user's name
+                }
+            },
+            error: (err) => {
+                console.error('Error fetching user details:', err);
+            }
+        });
+  }
+
+  animateTitle(): void {
+    $('.user-title').hide().fadeIn(1000).css('text-shadow', '2px 2px 5px rgba(0, 0, 0, 0.5)');
+  }
+
   fetchChartData(): void {
-    // Fetching data using userId as a string
     this.http.get(`http://localhost:5000/api/chartdata/${this.userId}`).subscribe(
       (data: any) => {
         console.log('Fetching chart data for userId:', this.userId);
-        // Ensure the fetched data exists before assigning
         if (data) {
-          if (data.chartData) { // Adjusted to ensure you are accessing the right structure
+          if (data.chartData) {
             if (data.chartData.lineData) {
               this.lineChartData = { 
                 labels: data.chartData.lineData.labels || [], 
@@ -79,7 +101,7 @@ export class LeadAnalyticsComponent implements OnInit {
                 values: data.chartData.barData.values || [] 
               };
             }
-            this.updateCharts();  // Call the chart update function
+            this.updateCharts();  
           } else {
             console.error('Chart data not found in the response');
           }
@@ -94,7 +116,6 @@ export class LeadAnalyticsComponent implements OnInit {
   }
 
   updateCharts(): void {
-    // Here you can pass the fetched data to the child components (charts)
-    // Pass data to chart components via Input properties
+    // Pass the fetched data to the child components (charts)
   }
 }

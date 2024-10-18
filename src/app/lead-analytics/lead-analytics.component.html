@@ -1,43 +1,40 @@
 <nb-layout>
   <nb-layout-column>
-    <!-- Bar Chart -->
-    <nb-card *ngIf="barChartData">
-      <nb-card-header>
-        Bar Chart Example
-      </nb-card-header>
-      <nb-card-body>
-        <app-bar-chart [data]="barChartData"></app-bar-chart>
-      </nb-card-body>
-    </nb-card>
+    <h1 class="user-title">User Data Analysis: {{ firstName }}</h1> <!-- Changed to firstName -->
+    <div class="chart-container">
+      <!-- Bar Chart -->
+      <nb-card *ngIf="barChartData" class="chart-card">
+        <nb-card-header>Bar Chart Example</nb-card-header>
+        <nb-card-body>
+          <app-bar-chart [data]="barChartData"></app-bar-chart>
+        </nb-card-body>
+      </nb-card>
 
-    <!-- Line Chart -->
-    <nb-card *ngIf="lineChartData">
-      <nb-card-header>
-        Line Chart Example
-      </nb-card-header>
-      <nb-card-body>
-        <app-line-chart [data]="lineChartData"></app-line-chart>
-      </nb-card-body>
-    </nb-card>
+      <!-- Line Chart -->
+      <nb-card *ngIf="lineChartData" class="chart-card">
+        <nb-card-header>Line Chart Example</nb-card-header>
+        <nb-card-body>
+          <app-line-chart [data]="lineChartData"></app-line-chart>
+        </nb-card-body>
+      </nb-card>
+    </div>
 
-    <!-- Pie Chart -->
-    <nb-card *ngIf="pieChartData">
-      <nb-card-header>
-        Pie Chart Example
-      </nb-card-header>
-      <nb-card-body>
-        <app-pie-chart [data]="pieChartData"></app-pie-chart>
-      </nb-card-body>
-    </nb-card>
+    <div class="chart-container">
+      <!-- Pie Chart -->
+      <nb-card *ngIf="pieChartData" class="chart-card">
+        <nb-card-header>Pie Chart Example</nb-card-header>
+        <nb-card-body>
+          <app-pie-chart [data]="pieChartData"></app-pie-chart>
+        </nb-card-body>
+      </nb-card>
 
-    <!-- Radar Chart -->
-    <nb-card *ngIf="radarChartData">
-      <nb-card-header>
-        Radar Chart Example
-      </nb-card-header>
-      <nb-card-body>
-        <app-radar-chart [data]="radarChartData"></app-radar-chart>
-      </nb-card-body>
-    </nb-card>
+      <!-- Radar Chart -->
+      <nb-card *ngIf="radarChartData" class="chart-card">
+        <nb-card-header>Radar Chart Example</nb-card-header>
+        <nb-card-body>
+          <app-radar-chart [data]="radarChartData"></app-radar-chart>
+        </nb-card-body>
+      </nb-card>
+    </div>
   </nb-layout-column>
 </nb-layout>

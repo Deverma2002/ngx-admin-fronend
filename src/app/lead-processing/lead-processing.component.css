@@ -1,5 +1,12 @@
 /* Styles for lead-processing component */
 nb-card {
-    transform: translate3d(0, 0, 0);
-  }
-  
+  transform: translate3d(0, 0, 0);
+}
+
+nb-card-header {
+  text-align: center; /* Center the text */
+  font-size: 24px; /* Increase font size */
+  font-weight: bold; /* Make the text bold */
+  padding: 20px; /* Add some padding for better spacing */
+}
+
