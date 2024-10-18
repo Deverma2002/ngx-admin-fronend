@@ -1,6 +1,7 @@
 <nb-layout>
   <nb-layout-column>
-    <h1 class="user-title">User Data Analysis: {{ firstName }}</h1> <!-- Changed to firstName -->
+    <h1 class="dynamic-title">User Data Analysis: {{ firstName }}</h1> <!-- Changed to firstName -->
+    
     <div class="chart-container">
       <!-- Bar Chart -->
       <nb-card *ngIf="barChartData" class="chart-card">

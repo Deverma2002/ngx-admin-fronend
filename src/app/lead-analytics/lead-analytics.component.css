@@ -1,3 +1,53 @@
+/* Ensure charts fit within their containers */
+canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Styling for chart cards */
+.chart-card {
+  margin-bottom: 30px; /* Space between charts */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for card */
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* On hover, cards will pop out slightly */
+.chart-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Card header styles */
+nb-card-header {
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: #095097; /* Updated background color to a blue shade */
+  color: white; /* Keep the text color white for contrast */
+  padding: 15px;
+  border-radius: 10px 10px 0 0; /* Rounded corners for header */
+}
+
+/* Card body styles */
+nb-card-body {
+  padding: 20px;
+}
+
+/* Responsive container styles */
+.container {
+  max-width: 1200px; /* Set a max-width for the content */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Add some spacing between cards on small screens */
+@media (max-width: 767px) {
+  .chart-card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Styles for dynamic title */
 .dynamic-title {
   font-size: 2.5em; /* Adjust size as needed */
   color: #4A4A4A; /* Text color */
@@ -12,8 +62,7 @@
   transform: scale(1.05); /* Scale up on hover */
 }
 
-
-
+/* Styles for chart container */
 .chart-container {
   display: flex;
   justify-content: space-between; /* Space between charts */
@@ -36,7 +85,7 @@ canvas {
   height: auto;
 }
 
-/* src/styles.css */
+/* Card styles */
 nb-card {
   transform: translate3d(0, 0, 0);
 }
